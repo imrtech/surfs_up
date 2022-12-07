@@ -31,9 +31,7 @@ df = pd.DataFrame(results, columns=['date','precipitation'])
 df.set_index(df['date'], inplace=True)
 print(df.to_string(index=False))
 
-```
 
-```
 # Sort the dataframe by date
 df = df.sort_index()
 
@@ -59,19 +57,20 @@ filter(Measurement.station == 'USC00519281').\
 filter(Measurement.date >= prev_year).all()
 print(results)
 
-
-```
 df = pd.DataFrame(results, columns=['tobs'])
 print(df)
-```
 
-```
+
 df.plot.hist(bins=12)
 plt.tight_layout()
+
 ```
+
 ![This is an image](/resources/temp_hist.png)
 
+
 We then developed a flash application that could be easily accessed via a browser to display routes for temperature observations for a year including precipitation, active station and temperature.
+
 
 ```
 #################################################
@@ -93,7 +92,6 @@ session = Session(engine)
 # Flask Setup
 #################################################
 app = Flask(__name__)
-
 
 #################################################
 # Flask Routes
@@ -149,7 +147,7 @@ def stats(start=None, end=None):
         filter(Measurement.date <= end).all()
     temps = list(np.ravel(results))
     return jsonify(temps)
-    ```
+```
 
 We were asked to find the temperature trends for the month of June:
 
